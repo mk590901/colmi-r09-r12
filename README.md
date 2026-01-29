@@ -83,5 +83,596 @@ The following steps must be performed during the parameter measurement process:
 
 The measurement process can take some time. It is accompanied by the transmission of data, which is caught by the listener (implemented by reader_task_ task::). The measurement process is complete when the data stops arriving. The key is to catching of this moment. The algorithm is simple: a command for the measurement is sent and a periodic timer is simultaneously started. When data is received, the data counter is incremented. The timer resets the data counter incoming. The process is complete when the data counter is no longer changes. This triggers the measured data presentation/saving procedure.
 
+## Trace
 
-
+```
+[jaguar] INFO: program 2b3700ca-54ad-dd61-9d30-f827725d94e7 started
+connect [bp]
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[1] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+bp: [0/0 mmHg]
+bp: [0/0 mmHg]
+...
+bp: [116/78 mmHg]
+bp: [116/78 mmHg]
+observation: 6
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -87, mac: 30:38:47:31:08:03, ca: 1, battery: 98% [false], bp: 116/78 mmHg, time: 2026/01/29 12:41:42.672}
+BleHelper is disposed
+@wait 10s ...
+connect [hr]
+------- BLE connection failed -------
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[2] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 7
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 6
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 6
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 6
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 6
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 6
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 5
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+hr: [0 bpm]
+observation: 5
+hr: [0 bpm]
+hr: [62 bpm]
+hr: [62 bpm]
+hr: [61 bpm]
+hr: [61 bpm]
+observation: 5
+hr: [60 bpm]
+hr: [60 bpm]
+hr: [60 bpm]
+hr: [60 bpm]
+hr: [59 bpm]
+hr: [59 bpm]
+observation: 6
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -93, mac: 30:38:47:31:08:03, ca: 2, battery: 98% [false], hr: 59 bpm, time: 2026/01/29 12:42:40.422}
+BleHelper is disposed
+@wait 10s ...
+connect [spo2]
+------- BLE connection failed -------
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[2] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 7
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+spo2: [0 %]
+observation: 6
+spo2: [0 %]
+spo2: [0 %]
+spo2: [99 %]
+spo2: [99 %]
+spo2: [97 %]
+spo2: [97 %]
+observation: 6
+spo2: [96 %]
+spo2: [96 %]
+spo2: [99 %]
+spo2: [99 %]
+spo2: [97 %]
+observation: 5
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -84, mac: 30:38:47:31:08:03, ca: 2, battery: 98% [false], spo2: 97 %, time: 2026/01/29 12:43:42.173}
+BleHelper is disposed
+@wait 10s ...
+connect [temp]
+------- BLE connection failed -------
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[2] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 7
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+temp: [0 °C]
+observation: 6
+temp: [0 °C]
+temp: [0 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+observation: 6
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+temp: [35.399999999999998579 °C]
+observation: 6
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -87, mac: 30:38:47:31:08:03, ca: 2, battery: 98% [false], temp: 35.399999999999998579 °C, time: 2026/01/29 12:44:43.323}
+BleHelper is disposed
+@wait 10s ...
+connect [bs]
+------- BLE connection failed -------
+------- BLE connection failed -------
+------- BLE connection failed -------
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[4] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 7
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+observation: 6
+bs: [0 mg/dL]
+bs: [0 mg/dL]
+bs: [104 mg/dL]
+bs: [103 mg/dL]
+bs: [90 mg/dL]
+bs: [92 mg/dL]
+observation: 6
+bs: [104 mg/dL]
+bs: [92 mg/dL]
+bs: [106 mg/dL]
+bs: [104 mg/dL]
+bs: [99 mg/dL]
+bs: [92 mg/dL]
+observation: 6
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -89, mac: 30:38:47:31:08:03, ca: 4, battery: 98% [false], bs: 92 mg/dL, time: 2026/01/29 12:45:47.922}
+BleHelper is disposed
+@wait 10s ...
+connect [hrv]
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[1] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 7
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 7
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+observation: 6
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [0 ms]
+hrv: [46 ms]
+observation: 5
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -81, mac: 30:38:47:31:08:03, ca: 1, battery: 98% [false], hrv: 46 ms, time: 2026/01/29 12:47:13.345}
+BleHelper is disposed
+@wait 10s ...
+connect [stress]
+connection to #[0x00, 0x30, 0x38, 0x47, 0x31, 0x08, 0x03] ok
+[1] connect_device -- completed
+battery level: [98% [false]]
+observation: 1
+observation: 0
+Timer deleted
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 7
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+stress: [0 ]
+observation: 6
+stress: [0 ]
+stress: [0 ]
+stress: [45 ]
+stress: [45 ]
+stress: [44 ]
+stress: [44 ]
+observation: 6
+stress: [43 ]
+stress: [43 ]
+stress: [42 ]
+stress: [42 ]
+stress: [40 ]
+stress: [40 ]
+observation: 6
+observation: 0
+Timer deleted
+@CB[stop-measure]
+{name: R09_0803, rssi: -72, mac: 30:38:47:31:08:03, ca: 1, battery: 98% [false], stress: 40 , time: 2026/01/29 12:48:10.482}
+BleHelper is disposed
+[jaguar] INFO: program 2b3700ca-54ad-dd61-9d30-f827725d94e7 stopped
+```
