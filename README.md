@@ -18,3 +18,70 @@ I also found there's no fundamental difference between __R09__ and __R12__, and 
 
 <img width="1204" height="1600" alt="colmi_r12" src="https://github.com/user-attachments/assets/02bee4c7-57cd-477a-a4c1-e26c795e3e93" />
 
+## Inside application
+
+The application searches for devices by name, done connect (up 8 attempts) and measures their charge.
+
+### Search devices
+
+```toit
+device/ble.RemoteScannedDevice := find-with-name central DEVICE-NAME
+```
+
+### Connect device
+```toit
+  connect_device central/ble.Central identifier -> none :
+
+    // Connection logic
+    
+    try :
+    
+      error := catch --trace=false :
+        remote-device = central.connect identifier
+        print "connection to $identifier ok"
+
+    // Discover the service.
+        services := remote-device.discover-services [SERVICE_UUID]
+        service/ble.RemoteService := services.first
+
+    // Discover the write characteristic.
+        write-characteristics := service.discover-characteristics [WRITE_CHAR_UUID]
+        write-characteristic/ble.RemoteCharacteristic := write-characteristics.first
+        w-characteristic_ = write-characteristic
+
+    // Discover the read characteristic.
+        read-characteristics := service.discover-characteristics [READ_CHAR_UUID]
+        read-characteristic/ble.RemoteCharacteristic  := read-characteristics.first
+        r-characteristic_ = read-characteristic
+
+    // Subscribe
+        subscribe read-characteristic
+        
+        requestBatteryLevel write-characteristic
+
+      if error :
+        print "------- $error -------"
+        throw "Failed to connect"
+ ```   
+
+
+After connecting, need measuring the battery level:
+
+```toit
+requestBatteryLevel write-characteristic
+```
+
+### Measurements
+
+The following steps must be performed during the parameter measurement process:
+
+* access the main service "6e40fff0-b5a3-f393-e0a9-e50e24dcca9e"
+* access the command writing service "6e400002-b5a3-f393-e0a9-e50e24dcca9e"
+* access the data reading service "6e400002-b5a3-f393-e0a9-e50e24dcca9e"
+* subscribe to receive data
+* send a command to the writing service
+
+The measurement process can take some time. It is accompanied by the transmission of data, which is caught by the listener (implemented by reader_task_ task::). The measurement process is complete when the data stops arriving. The key is to catching of this moment. The algorithm is simple: a command for the measurement is sent and a periodic timer is simultaneously started. When data is received, the data counter is incremented. The timer resets the data counter incoming. The process is complete when the data counter is no longer changes. This triggers the measured data presentation/saving procedure.
+
+
+
