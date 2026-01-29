@@ -233,6 +233,7 @@ BleHelper is disposed
 ## Notes
 
 > App using the ntp package (https://docs.toit.io/tutorials/misc/date-time)
+
 > Command to run app:
 ```
 micrcx@micrcx-desktop:~/toit/colmi_r09-r12$ jag run -d basic colmi_runner.toit
