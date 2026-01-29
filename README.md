@@ -229,3 +229,16 @@ Timer deleted
 BleHelper is disposed
 [jaguar] INFO: program 2b3700ca-54ad-dd61-9d30-f827725d94e7 stopped
 ```
+
+## Notes
+
+> App using the ntp package (https://docs.toit.io/tutorials/misc/date-time)
+> Command to run app:
+```
+micrcx@micrcx-desktop:~/toit/colmi_r09-r12$ jag run -d basic colmi_runner.toit
+Scanning for device with name: 'basic'
+Running 'colmi_runner.toit' on 'basic' ...
+Success: Sent 61KB code to 'basic' in 2.38s
+micrcx@micrcx-desktop:~/toit/colmi_r09-r12$ 
+```
+
